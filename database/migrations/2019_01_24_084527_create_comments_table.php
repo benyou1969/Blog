@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id')->index();
             $table->unsignedInteger('post_id')->index();
-            $table->string('body');
+            $table->mediumText('body');
             $table->foreign('user_id')
                   ->references('id')->on('users')
                   ->onDelete('cascade');

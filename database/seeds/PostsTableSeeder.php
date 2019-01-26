@@ -12,5 +12,6 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         $post = factory('App\Post', 20)->create();
+        $post->each(function ($post) { factory('App\Comment', 10)->create(['post_id' => $post->id]);});
     }
 }
