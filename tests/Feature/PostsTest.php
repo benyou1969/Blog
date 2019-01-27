@@ -23,7 +23,7 @@ class PostsTest extends TestCase
     public function test_a_user_can_read_a_single_post()
     {
         $post = factory('App\Post')->create();
-        $resposne = $this->get('/posts/'. $post->id);
+        $resposne = $this->get($post->path());
         $resposne->assertSee($post->title, $post->body);
     } 
 }
