@@ -13,4 +13,14 @@
               <a href="{{ url("posts") }}" class="btn btn-primary">Go back</a>
             </div>
       </div>
+      <hr>
+      <div class="comments">
+      @foreach ($post->comment as $comment)
+        <div class="card">
+          <div class="card-body">
+           {{ $comment->body }}
+          </div>
+        </div>
+      @endforeach
+     </div>
 @endsection

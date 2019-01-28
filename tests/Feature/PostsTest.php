@@ -9,27 +9,31 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 class PostsTest extends TestCase
 {
     use DatabaseMigrations;
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
+    public function setUp()
+    {
+        parent::setUp();
+        $this->post = factory('App\Post')->create();
+    }
+    
     public function test_a_user_can_browse_all_posts()
     {
-        $post = factory('App\Post')->create();
         $resposne = $this->get('/posts');
-        $resposne->assertSee($post->title);
+        $resposne->assertSee($this->post->title);
     }
     public function test_a_user_can_read_a_single_post()
     {
-        $post = factory('App\Post')->create();
-        $resposne = $this->get($post->path());
-        $resposne->assertSee($post->title, $post->body);
+        $resposne = $this->get($this->post->path());
+        $resposne->assertSee($this->post->title, $this->post->body);
     } 
     public function test_a_post_has_a_creator()
     {
-        $post = factory('App\Post')->create();
-        $resposne = $this->get($post->path())
-        ->assertSee($post->creator->name);
+        $resposne = $this->get($this->post->path())
+        ->assertSee($this->post->creator->name);
+    }
+    public function test_a_user_can_read_comments_those_are_associated_with_post()
+    {
+        $comment = factory('App\Comment')->create(["post_id"=> $this->post->id]);
+        $resposne = $this->get($this->post->path())
+        ->assertSee($comment->body);
     }
 }
