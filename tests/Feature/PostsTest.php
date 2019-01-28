@@ -26,4 +26,10 @@ class PostsTest extends TestCase
         $resposne = $this->get($post->path());
         $resposne->assertSee($post->title, $post->body);
     } 
+    public function test_a_post_has_a_creator()
+    {
+        $post = factory('App\Post')->create();
+        $resposne = $this->get($post->path())
+        ->assertSee($post->creator->name);
+    }
 }
