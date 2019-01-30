@@ -24,4 +24,9 @@ class ReadCommentsTest extends TestCase
         $response = $this->get($this->post->path())
         ->assertSee($this->comment->body);
     }
+    public function test_a_comment_has_an_owner()
+    {
+        $response = $this->get($this->post->path())
+        ->assertSee($this->comment->owner->name);
+    }
 }
