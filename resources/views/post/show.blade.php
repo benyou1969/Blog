@@ -21,7 +21,7 @@
         @foreach ($post->comment as $comment)
           <div class="shadow-sm mb-2 bg-white rounded card border border-light" style="margin-bottom:10px">
             <div class="card-body">
-            {{ $comment->body }}
+             <a href="#">{{ $comment->owner->name }}</a> {{ $comment->body }}
             </div>
           </div>
         @endforeach
