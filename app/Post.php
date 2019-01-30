@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $guarded = [];
+
     public function path()
     {
         return '/posts/' . $this->id;
@@ -18,4 +20,10 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function addComment($comment)
+    {
+        $this->comment()->create($comment);
+    }
+   
 }

@@ -19,19 +19,34 @@
       <div class="shadow-sm p-3 mb-5 bg-white rounded">
         {{ $post->comment->count() }} {{  str_plural('Comment', $post->comment->count())}} 
         <i class="far fa-comment-alt"></i>
+        <div class="shadow-sm p-3 mb-4 bg-white rounded border border-black" style="margin-top:10px">
+          @if(auth()->check())
+            <form method="post" action="{{ $post->path() . '/comments' }}">
+              @csrf
+                <div class="form-group border border-light">
+                  <textarea type="email" class="form-control" id="body" name="body" placeholder="Write a comment..."></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-sm btn-light">Comment</button>
+                </div>
+            </form>    
+          @else
+             <p class="text-muted text-center">You must <a href="{{ route('login') }}">login</a> to create a comment.</p>
+          @endif
+        </div>
         @foreach ($post->comment as $comment)
           <div class="shadow-sm mb-2 bg-white rounded card border border-light" style="margin-bottom:10px">
             <div class="card-body">
-             <a href="#">{{ $comment->owner->name }}</a> {{ $comment->body }}
+             <a href="">{{ $comment->owner->name }}</a> <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small> {{ $comment->body }}
             </div>
           </div>
         @endforeach
      </div>
     </div>
- 
+ {{-- info --}}
     <div class="col-lg-4 col-md-5">
       <div class="bg-white text-muted shadow-sm p-3 mb-5 bg-white rounded" style="padding: 10px 10px">
-        <p>  This post was published on <small>{{ $post->created_at }}</small>, by <b><a href="#">{{ $post->creator->name }}</a></b>, </p>
+        <p>This post was published on <small>{{ $post->created_at }}</small>, by <b><a href="#">{{ $post->creator->name }}</a></b>, </p>
       </div>
     </div>
  </div>
