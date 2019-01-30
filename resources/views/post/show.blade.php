@@ -17,7 +17,8 @@
   <div class="row">
     <div class="col-lg-8 col-md-7">
       <div class="shadow-sm p-3 mb-5 bg-white rounded">
-        Comments <i class="far fa-comment-alt"></i>
+        {{ $post->comment->count() }} {{  str_plural('Comment', $post->comment->count())}} 
+        <i class="far fa-comment-alt"></i>
         @foreach ($post->comment as $comment)
           <div class="shadow-sm mb-2 bg-white rounded card border border-light" style="margin-bottom:10px">
             <div class="card-body">
