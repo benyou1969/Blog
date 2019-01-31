@@ -12,7 +12,7 @@ class PostsTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->post = factory('App\Post')->create();
+        $this->post = create('App\Post');
     }
     
     public function test_a_user_can_browse_all_posts()
@@ -32,7 +32,7 @@ class PostsTest extends TestCase
     }
     public function test_a_user_can_read_comments_those_are_associated_with_post()
     {
-        $comment = factory('App\Comment')->create(["post_id"=> $this->post->id]);
+        $comment = create('App\Comment','create',["post_id"=> $this->post->id]);
         $resposne = $this->get($this->post->path())
         ->assertSee($comment->body);
     }

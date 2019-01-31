@@ -16,8 +16,8 @@ class ReadCommentsTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->post = factory('App\Post')->create();
-        $this->comment = factory('App\Comment')->create(['post_id' => $this->post->id]);
+        $this->post = create('App\Post');
+        $this->comment = create('App\Comment', 'create', ['post_id' => $this->post->id]);
     }
     public function test_a_user_can_see_all_comments()
     {
