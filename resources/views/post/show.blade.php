@@ -24,7 +24,7 @@
             <form method="post" action="{{ $post->path() . '/comments' }}">
               @csrf
                 <div class="form-group border border-light">
-                  <textarea type="email" class="form-control" id="body" name="body" placeholder="Write a comment..."></textarea>
+                  <textarea type="title" class="form-control" id="body" name="body" placeholder="Write a comment..."></textarea>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-sm btn-light">Comment</button>

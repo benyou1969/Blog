@@ -12,6 +12,10 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     public function index()
     {
         $posts = Post::latest()->get();
@@ -25,7 +29,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -36,7 +40,12 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = Post::create([
+             'user_id' => auth()->id(),
+             'title' => request('title'),
+             'body' => request('body'),
+         ]);
+         return redirect($post->path());
     }
 
     /**
