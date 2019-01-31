@@ -14,7 +14,7 @@ class WritePostTest extends TestCase
         $post = factory('App\Post')->make();
         $this->post('/posts', $post->toArray());
         $this->get($post->path())
-             ->assertSee($post->title);
-        
+             ->assertSee($post->title)
+             ->assertSee($post->body);
     }
 }
