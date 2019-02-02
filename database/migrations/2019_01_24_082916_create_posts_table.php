@@ -16,12 +16,13 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->index();
+            $table->unsignedInteger('community_id');
             $table->string('title')->nullable();
             $table->mediumText('body');
             $table->timestamps();
             $table->foreign('user_id')
-                  ->references('id')->on('users')
-                  ->onDelete('cascade');
+                ->references('id')->on('users')
+                ->onDelete('cascade');
         });
     }
 
@@ -32,6 +33,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');  
+        Schema::dropIfExists('posts');
     }
 }

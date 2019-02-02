@@ -12,10 +12,10 @@ class WritePostTest extends TestCase
     public function test_an_authenticated_user_can_create_a_post()
     {
         $this->signIn();
-        $post = factory('App\Post')->make();
+        $post = create('App\Post');
         $this->post('/posts', $post->toArray());
         $this->get($post->path())
-             ->assertSee($post->title)
-             ->assertSee($post->body);
+            ->assertSee($post->title)
+            ->assertSee($post->body);
     }
 }

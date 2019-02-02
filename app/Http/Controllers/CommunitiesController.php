@@ -2,25 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
-use Illuminate\Http\Request;
 use App\Community;
+use Illuminate\Http\Request;
 
-class PostsController extends Controller
+class CommunitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
-    }
     public function index()
     {
-        $posts = Post::latest()->get();
-        return view('post.index', compact('posts'));
+        //
     }
 
     /**
@@ -30,7 +24,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        //
     }
 
     /**
@@ -39,35 +33,29 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Community $community)
+    public function store(Request $request)
     {
-        $post = Post::create([
-            'user_id' => auth()->id(),
-            'community_id' => request('community_id'),
-            'title' => request('title'),
-            'body' => request('body'),
-        ]);
-        return redirect($post->path());
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Community  $community
      * @return \Illuminate\Http\Response
      */
-    public function show($communityId, Post $post)
+    public function show(Community $community)
     {
-        return view('post.show', compact('post'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Community  $community
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Community $community)
     {
         //
     }
@@ -76,10 +64,10 @@ class PostsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
+     * @param  \App\Community  $community
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Community $community)
     {
         //
     }
@@ -87,10 +75,10 @@ class PostsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Post  $post
+     * @param  \App\Community  $community
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Community $community)
     {
         //
     }

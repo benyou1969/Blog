@@ -10,7 +10,11 @@ class Post extends Model
 
     public function path()
     {
-        return '/posts/' . $this->id;
+        return "/posts/{$this->community->slug}/{$this->id}";
+    }
+    public function community()
+    {
+        return $this->belongsTo(Community::class);
     }
     public function creator()
     {
@@ -25,5 +29,5 @@ class Post extends Model
     {
         $this->comment()->create($comment);
     }
-   
+
 }

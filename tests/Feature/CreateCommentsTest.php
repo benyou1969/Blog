@@ -27,8 +27,8 @@ class CreateCommentsTest extends TestCase
     {
         $this->be($user = factory('App\User')->create());
         $comment = factory('App\Comment')->create(['post_id' => $this->post->id]);
-        $this->post($this->post->path().'/comments', $comment->toArray());
+        $this->post($this->post->path() . '/comments', $comment->toArray());
         $this->get($this->post->path())
-             ->assertSee($comment->body);
+            ->assertSee($comment->body);
     }
 }
