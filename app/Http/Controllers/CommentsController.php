@@ -8,15 +8,15 @@ use App\Post;
 
 class CommentsController extends Controller
 {
-    public function store(Post $post, Request $request) 
-    {
-          $this->validate($request, [
-            'body' => 'required|max:255',
-          ]);
-           $post->addComment([
-             'user_id' => auth()->id(),
-             'body' => request('body'),
-           ]);
-           return back();
-    }
+  public function store($communityId, Post $post, Request $request)
+  {
+    $this->validate($request, [
+      'body' => 'required|max:255',
+    ]);
+    $post->addComment([
+      'user_id' => auth()->id(),
+      'body' => request('body'),
+    ]);
+    return back();
+  }
 }

@@ -27,4 +27,4 @@ Route::post('/posts/', 'PostsController@store');
 
 
 // Comments
-Route::post('/posts/{post}/comments', 'CommentsController@store');
+Route::post('/posts/{community}/{post}/comments', 'CommentsController@store');
