@@ -28,9 +28,9 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Community $community)
     {
-        return view('post.create');
+        return view('post.create', compact('community'));
     }
 
     /**
@@ -39,7 +39,7 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Community $community)
+    public function store(Request $request)
     {
         $post = Post::create([
             'user_id' => auth()->id(),

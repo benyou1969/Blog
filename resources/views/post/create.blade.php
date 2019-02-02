@@ -12,6 +12,14 @@
         <label for="body">Description</label>
         <textarea class="form-control" id="body" name="body" rows="3" placeholder="Write description here..."></textarea>
       </div>
+       <div class="form-group justify-content-left" style="width:60%">
+        <label for="exampleFormControlSelect1">Example select</label>
+        <select class="form-control" id="community" name="community_id">
+          @foreach (\App\Community::all() as $community)
+              <option value="{{ $community->id }}">{{  $community->slug}}</option>
+          @endforeach
+        </select>
+      </div>
       <div class="d-flex justify-content-end">
          <button type="submit" class="btn btn-outline-secondary">Create <i class="fas fa-plus-square"></i></button>
       </div>

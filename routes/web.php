@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Posts
 Route::get('/posts', 'PostsController@index')->name('Posts');
 Route::get('/posts/{community}/{post}', 'PostsController@show');
-Route::get('/create', 'PostsController@create');
+Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts/', 'PostsController@store');
 
 
