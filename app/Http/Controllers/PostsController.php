@@ -41,6 +41,11 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'body' => 'required|',
+            'community_id' => 'required',
+        ]);
         $post = Post::create([
             'user_id' => auth()->id(),
             'community_id' => request('community_id'),
@@ -81,6 +86,11 @@ class PostsController extends Controller
      */
     public function update($communityId, Request $request, Post $post)
     {
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'body' => 'required|min:5',
+            'community_id' => 'required',
+        ]);
         $post->title = request('title');
         $post->community_id = request('community_id');
         $post->body = request('body');

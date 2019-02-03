@@ -6,17 +6,18 @@
       @csrf
       <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" name="title" placeholder="Enter title here...">
+        <input type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" placeholder="Enter title here..." value="{{ old('title') }}" required>
       </div>
       <div class="form-group">
         <label for="body">Description</label>
-        <textarea class="form-control" id="body" name="body" rows="3" placeholder="Write description here..."></textarea>
+        <textarea class="form-control {{ $errors->has('body') ? ' is-invalid' : '' }}" id="body" name="body" rows="3" placeholder="Write description here..." required>{{ old('body') }}</textarea>
       </div>
        <div class="form-group justify-content-left" style="width:60%">
-        <label for="exampleFormControlSelect1">Example select</label>
-        <select class="form-control" id="community" name="community_id">
+        <label for="exampleFormControlSelect1">Select</label>
+        <select  class="form-control  {{ $errors->has('community_id') ? ' is-invalid' : '' }}" id="community" name="community_id" required>
+          <option value="">Choose one...</option>
           @foreach (\App\Community::all() as $community)
-              <option value="{{ $community->id }}">{{  $community->slug}}</option>
+              <option value="{{ $community->id }}" {{ old("community_id") == $community->id ? 'selected' : '' }}>{{  $community->slug}}</option>
           @endforeach
         </select>
       </div>

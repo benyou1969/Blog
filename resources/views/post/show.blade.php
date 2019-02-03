@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div>
-  <div class="shadow-sm p-2 mb-5 bg-white rounded card border border-light">
+  <div class="shadow-sm p-1 mb-5 bg-white rounded card border border-light">
       <div class="card-header bg-info text-white">
           <b>{{ $post->title }}</b>
           {{-- <small class="float-right">{{ $post->created_at }}</small> --}}
@@ -76,7 +76,7 @@
       </div>
     </div>
     <div class="d-flex justify-content-lg-start"> 
-    <a href="{{ url("posts") }}" class="primary rounded-circle" style="font-size: 30px;" title="Go back to posts"><i class="fas fa-arrow-circle-left"></i></a>
+    <a href="{{ url("posts") }}" class="primary" title="Go back to posts"><i class="fas fa-arrow-circle-left shadow-sm p-2 mb-5 bg-white rounded" style="font-size: 30px;"></i></a>
     </div>
  </div>
 @endsection
