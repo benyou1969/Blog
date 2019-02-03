@@ -94,8 +94,9 @@ class PostsController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($communityId, Post $post)
     {
-        //
+        $post->delete();
+        return redirect("/posts");
     }
 }

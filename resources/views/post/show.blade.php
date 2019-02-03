@@ -4,7 +4,27 @@
   <div class="shadow-sm p-2 mb-5 bg-white rounded card border border-light">
       <div class="card-header bg-info text-white">
           <b>{{ $post->title }}</b>
-          <small class="float-right">{{ $post->created_at }}</small>
+          {{-- <small class="float-right">{{ $post->created_at }}</small> --}}
+          <div class="float-right">
+            <div class="btn-group dropleft">
+              <button type="button" class="btn btn-sm btn-white dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </button>
+              <div class="dropdown-menu">
+                <!-- Dropdown menu links -->
+                    <a class="dropdown-item" href="#"><i class="far fa-bookmark"></i> Sava</a>
+                    <a class="dropdown-item" href="#"><i class="far fa-flag"></i> Report</a>
+                    @if($post->creator->id == auth()->id())
+                    <a href="{{ $post->path() }}/edit" class="dropdown-item"><i class="far fa-edit"> Edit</i></a>
+                    <div class="dropdown-divider"></div>
+                    <form action="{{ $post->path() }}/delete" method="post" class="bg-danger text-white">
+                      @csrf
+                      @method("DELETE")
+                      <button class="btn text-white bg-transparent border-0 dropdown-item" type="submit"><i class="color-danger far fa-trash-alt"></i> DELETE</button>
+                    </form>
+                    @endif
+              </div>
+            </div>
+          </div>
       </div>
       <div class="card-body">
           <blockquote class="blockquote mb-0">
