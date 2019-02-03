@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<div>
   <div class="shadow-sm p-2 mb-5 bg-white rounded card border border-light">
       <div class="card-header bg-info text-white">
           <b>{{ $post->title }}</b>
@@ -8,11 +9,12 @@
       <div class="card-body">
           <blockquote class="blockquote mb-0">
             <p>{{ $post->body }}</p>
-                <footer class="float-right blockquote-footer">Someone famous in <cite title="Source Title">{{ $post->creator->name}}</cite></footer>
+                <footer class="float-right blockquote-footer">Someone famous in <cite title="Source Title">{{ $post->creator->name}}, 
+                </cite></footer>
           </blockquote>
-          <a href="{{ url("posts") }}" class="btn btn-primary">Go back</a>
       </div>
   </div>
+</div>  
   {{-- Comment --}}
   <div class="row">
     <div class="col-lg-8 col-md-7">
@@ -46,8 +48,15 @@
  {{-- info --}}
     <div class="col-lg-4 col-md-5">
       <div class="bg-white text-muted shadow-sm p-3 mb-5 bg-white rounded" style="padding: 10px 10px">
-        <p>This post was published on <small>{{ $post->created_at }}</small>, by <b><a href="#">{{ $post->creator->name }}</a></b>, </p>
+        <p>This post was published on <small>{{ $post->created_at }}</small>, by <b><a href="#">{{ $post->creator->name }}</a></b>, 
+          @if($post->creator->id == auth()->id())
+              click if you want to edit the post <a href="{{ $post->path() }}/edit"><i class="far fa-edit"></i></a>
+          @endif
+        </p>
       </div>
+    </div>
+    <div class="d-flex justify-content-lg-start"> 
+    <a href="{{ url("posts") }}" class="primary rounded-circle" style="font-size: 30px;" title="Go back to posts"><i class="fas fa-arrow-circle-left"></i></a>
     </div>
  </div>
 @endsection

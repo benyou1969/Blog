@@ -81,13 +81,9 @@ class PostsController extends Controller
      */
     public function update($communityId, Request $request, Post $post)
     {
-        // $post->title = request('title');
-        // $post->body = request('body');
-        // $post->save();
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->community_id = $request->input('community_id');
-        $post->user_id = auth()->user()->id;
+        $post->title = request('title');
+        $post->community_id = request('community_id');
+        $post->body = request('body');
         $post->save();
         return redirect($post->path());
     }
