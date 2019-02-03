@@ -17,9 +17,13 @@ class PostsController extends Controller
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
-    public function index()
+    public function index(Community $community)
     {
-        $posts = Post::latest()->get();
+        if ($community->exists) {
+            $posts = $community->post()->latest()->get();
+        } else {
+            $posts = Post::latest()->get();
+        }
         return view('post.index', compact('posts'));
     }
 
