@@ -24,6 +24,8 @@ Route::get('/posts', 'PostsController@index')->name('Posts');
 Route::get('/posts/{community}/{post}', 'PostsController@show');
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts/', 'PostsController@store');
+Route::get('/posts/{community}/{post}/edit', 'PostsController@edit');
+Route::patch('/posts/{community}/{post}/', 'PostsController@update');
 
 
 // Comments

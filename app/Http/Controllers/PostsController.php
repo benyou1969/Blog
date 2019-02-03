@@ -67,9 +67,9 @@ class PostsController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($communityId, Post $post)
     {
-        //
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -79,9 +79,17 @@ class PostsController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update($communityId, Request $request, Post $post)
     {
-        //
+        // $post->title = request('title');
+        // $post->body = request('body');
+        // $post->save();
+        $post->title = $request->input('title');
+        $post->body = $request->input('body');
+        $post->community_id = $request->input('community_id');
+        $post->user_id = auth()->user()->id;
+        $post->save();
+        return redirect($post->path());
     }
 
     /**
