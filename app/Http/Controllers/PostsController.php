@@ -47,7 +47,7 @@ class PostsController extends Controller
             'title' => request('title'),
             'body' => request('body'),
         ]);
-        return redirect($post->path());
+        return redirect($post->path())->with("success", "Your post has been created successfully");
     }
 
     /**
@@ -85,7 +85,7 @@ class PostsController extends Controller
         $post->community_id = request('community_id');
         $post->body = request('body');
         $post->save();
-        return redirect($post->path());
+        return redirect($post->path())->with("success", "This post “{$post->title}”- has been updated successfully");
     }
 
     /**
@@ -97,6 +97,6 @@ class PostsController extends Controller
     public function destroy($communityId, Post $post)
     {
         $post->delete();
-        return redirect("/posts");
+        return redirect("/posts")->with("success", "This post “{$post->title}”- has been deleted successfully");
     }
 }

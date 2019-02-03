@@ -75,6 +75,7 @@
 
         <main class="py-4">
             <div class="container">
+                @include("layouts.alerts")
                 @yield('content')
             </div>
         </main>
