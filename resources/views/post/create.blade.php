@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Creating...')
 @section('content')
 <div class="row justify-content-md-center">
  <div class="col-md-9 col-lg-7 bg-white shadow-sm p-3 mb-5 bg-white rounded">

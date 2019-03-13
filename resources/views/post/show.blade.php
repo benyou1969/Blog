@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', $post->title)
 @section('content')
 <div>
   <div class="shadow-sm p-1 mb-5 bg-white rounded card border border-light">

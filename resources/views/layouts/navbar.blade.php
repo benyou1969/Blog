@@ -32,9 +32,19 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    <a class="dropdown-item" href="{{ route('Posts') }}">
+                                        <i class="fas fa-th-list"></i> {{ __('Home') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('create_post') }}">
+                                        <i class="far fa-plus-square"></i> {{ __('Create Post') }}
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-sign-out-alt"></i>
                                         {{ __('Logout') }}
                                     </a>
 

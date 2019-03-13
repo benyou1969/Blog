@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/posts', 'PostsController@index')->name('Posts');
 Route::get('/posts/{community}/{post}', 'PostsController@show');
 Route::get('/posts/{community}', 'PostsController@index');
-Route::get('/posts/create', 'PostsController@create');
+Route::get('/posts/create', 'PostsController@create')->name('create_post');
 Route::post('/posts/', 'PostsController@store');
 Route::get('/posts/{community}/{post}/edit', 'PostsController@edit');
 Route::patch('/posts/{community}/{post}/', 'PostsController@update');

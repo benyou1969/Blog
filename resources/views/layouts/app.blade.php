@@ -7,7 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title', 'Blog')</title>
+
+    <link rel="shortcut icon" href="https://avatars2.githubusercontent.com/u/31636863?s=400&u=5af9608af76c7f354a00689bd084e111a6a66382&v=4" type="image/x-icon">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
