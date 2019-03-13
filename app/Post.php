@@ -10,7 +10,7 @@ class Post extends Model
 
     public function path()
     {
-        return "/posts/{$this->community->slug}/{$this->id}";
+        return "/p/{$this->community->slug}/{$this->id}";
     }
     public function community()
     {

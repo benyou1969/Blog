@@ -17,7 +17,7 @@ class PostsTest extends TestCase
     
     public function test_a_user_can_browse_all_posts()
     {
-        $resposne = $this->get('/posts');
+        $resposne = $this->get($this->post->path());
         $resposne->assertSee($this->post->title);
     }
     public function test_a_user_can_read_a_single_post()
@@ -33,7 +33,7 @@ class PostsTest extends TestCase
     public function test_a_user_can_read_comments_those_are_associated_with_post()
     {
         $comment = create('App\Comment','create',["post_id"=> $this->post->id]);
-        $resposne = $this->get($this->post->path())
+        $this->get($this->post->path())
         ->assertSee($comment->body);
     }
 }

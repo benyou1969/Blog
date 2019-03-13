@@ -13,7 +13,7 @@ class PostTest extends TestCase
         $post = create('App\Post');
         $this->assertEquals(
             $post->path(),
-            "/posts/{$post->community->slug}/{$post->id}"
+            "/p/{$post->community->slug}/{$post->id}"
         );
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
 <div class="row justify-content-md-center">
  <div class="col-md-9 col-lg-7 bg-white shadow-sm p-3 mb-5 bg-white rounded">
-   <form action="/posts" method="POST">
+   <form action="{{ route('store_post_method') }}" method="POST">
       @csrf
       <div class="form-group">
         <label for="title">Title</label>

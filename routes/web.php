@@ -11,24 +11,24 @@
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Posts
-Route::get('/posts', 'PostsController@index')->name('Posts');
-Route::get('/posts/{community}/{post}', 'PostsController@show');
-Route::get('/posts/{community}', 'PostsController@index');
-Route::get('/posts/create', 'PostsController@create')->name('create_post');
-Route::post('/posts/', 'PostsController@store');
-Route::get('/posts/{community}/{post}/edit', 'PostsController@edit');
-Route::patch('/posts/{community}/{post}/', 'PostsController@update');
-Route::delete('/posts/{community}/{post}/delete', 'PostsController@destroy');
+Route::get('/', 'PostsController@index')->name('Posts');
+Route::get('/p/{community}/{post}', 'PostsController@show');
+Route::get('/p/{community}', 'PostsController@index');
+Route::get('/create', 'PostsController@create')->name('create_post');
+Route::post('/', 'PostsController@store')->name('store_post_method');
+Route::get('/p/{community}/{post}/edit', 'PostsController@edit');
+Route::patch('/p/{community}/{post}/', 'PostsController@update');
+Route::delete('/p/{community}/{post}/delete', 'PostsController@destroy');
 
 
 // Comments
-Route::post('/posts/{community}/{post}/comments', 'CommentsController@store');
+Route::post('/p/{community}/{post}/comments', 'CommentsController@store');
